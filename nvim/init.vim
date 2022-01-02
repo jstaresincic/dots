@@ -1,16 +1,26 @@
+" Install plugins with :PlugInstall
 call plug#begin("~/.vim/plugged")
-  " Plugin Section
-  Plug 'scrooloose/nerdtree'                  " Nerdtree
-  Plug 'ryanoasis/vim-devicons'               " Icons for nerdtree
-  Plug 'pangloss/vim-javascript'              " JavaScript support
-  Plug 'leafgarland/typescript-vim'           " TypeScript syntax
-  Plug 'maxmellon/vim-jsx-pretty'             " JS and JSX syntax
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-  Plug 'nvim-lua/plenary.nvim'                " Something for Telescope
-  Plug 'nvim-telescope/telescope.nvim'        " Telescope
-  Plug 'jremmen/vim-ripgrep'                  " Ripgrep
-  Plug 'stefandtw/quickfix-reflector.vim'     " Riggrep enable save changes to all files
+  " Nerdtree
+  Plug 'scrooloose/nerdtree'
+  Plug 'ryanoasis/vim-devicons'
+  " Languages syntax highlighting & snippets
+  Plug 'pangloss/vim-javascript'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'maxmellon/vim-jsx-pretty'
+  " TODO: check if this even works (treesitter)
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'mattn/emmet-vim'
+  Plug 'neoclide/coc.nvim', {'branch':'release'}
+  "Telescope
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  " Ripgrep & save all changes
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'stefandtw/quickfix-reflector.vim'
+  " Themes
+  Plug 'ayu-theme/ayu-vim'
 call plug#end()
+
 " Set basic settings for look&fel
 set nu rnu
 set ruler
@@ -23,12 +33,25 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+let ayucolor="dark"
+colorscheme ayu
+
+" CoC use <tab> for completion
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 " Configuring nerdtree and devicons
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
+
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
 
@@ -40,6 +63,7 @@ let g:qf_write_changes = 1
 
 " Refresh config without reopening
 nnoremap šq :source $MYVIMRC<CR>
+
 " Toggle
 nnoremap šš :Telescope find_files<CR>
 nnoremap šp :NERDTreeToggle<CR>
@@ -49,6 +73,7 @@ inoremap čč <Esc>
 xnoremap čč <Esc>
 cnoremap čč <C-C>
 nnoremap čn :nohlsearch<CR>
+
 " close, split, only, rnu
 nnoremap đđ :close<CR>
 nnoremap đš :vsplit<CR>
@@ -61,8 +86,9 @@ nnoremap đl <C-W>L
 nnoremap đk <C-W>K
 nnoremap đj <C-W>J
 nnoremap đh <C-W>H
-nnoremap ć <C-W><
-nnoremap ž <C-W>>
+nnoremap Ć <C-W><
+nnoremap Ž <C-W>>
+
 " Jump panels
 tnoremap čh <C-\><C-n><C-w>h
 tnoremap čj <C-\><C-n><C-w>j
@@ -72,15 +98,17 @@ nnoremap čh <C-w>h
 nnoremap čj <C-w>j
 nnoremap čk <C-w>k
 nnoremap čl <C-w>l
+
 " Bracket jumps
 nnoremap šj <C-{>
 nnoremap šk <C-}>
 nnoremap šh <C-[>
 nnoremap šl <C-]>
+
 " Start of the line with text
 nnoremap č0 ^
 
-" Try to figure out how to add programming mode
+" Add sub-modes to insert mode
 let s:isProgramming = 0
 function SetProgrammingMode()
 	if s:isProgramming==0
