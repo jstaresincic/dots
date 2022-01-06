@@ -36,16 +36,6 @@ set smartindent
 let ayucolor="dark"
 colorscheme ayu
 
-" CoC use <tab> for completion
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
 " Configuring nerdtree and devicons
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
@@ -108,51 +98,18 @@ nnoremap šl <C-]>
 " Start of the line with text
 nnoremap č0 ^
 
-" Add sub-modes to insert mode
-let s:isProgramming = 0
-function SetProgrammingMode()
-	if s:isProgramming==0
-		inoremap čh <Esc>hli
-		inoremap čj <Esc>jli
-		inoremap čk <Esc>kli
-		inoremap čl <Esc>lli
-		inoremap čw <Esc>lwi
-		inoremap če <Esc>ea
-		inoremap čb <Esc>bi
-		inoremap č0 <Esc>^i
-		inoremap č4 <Esc>0$a
-		inoremap ča (
-		inoremap čs )
-		inoremap čd {
-		inoremap čf }
-		inoremap čr [
-		inoremap čt ]
-		inoremap ču "
-		inoremap či '
-		inoremap čo `
-		let s:isProgramming = 1
-	else
-		iunmap čh
-		iunmap čj
-		iunmap čk
-		iunmap čl
-		iunmap čw
-		iunmap če
-		iunmap čb
-		iunmap č0
-		iunmap č4
-		iunmap ča
-		iunmap čs
-		iunmap čd
-		iunmap čf
-		iunmap čr
-		iunmap čt
-		iunmap ču
-		iunmap či
-		iunmap čo
-	    let s:isProgramming = 0
-	endif
-    return ""
+" Open file
+nnoremap čf gf
+
+" Jump across jumps
+nnoremap či <C-i>
+nnoremap čo <C-o>
+
+function! SourceLocal(relativePath)
+  let root = stdpath('config')
+  let fullPath = root . '/'. a:relativePath
+  exec 'source ' . fullPath
 endfunction
-inoremap đđ <C-R>=SetProgrammingMode()<CR>
-call SetProgrammingMode()
+
+call SourceLocal('coc.vim')
+call SourceLocal('submodes.vim')
