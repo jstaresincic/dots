@@ -7,7 +7,7 @@ cp ./.gitmessage ~/.gitmessage
 # TODO: installs
 
 #exports and configs
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 git config --global commit.template ~/.gitmessage
