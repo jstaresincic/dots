@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # copy files to directories
-cp ./.gitmessage ~/.gitmessage
-# TODO: all other copying
+cp -v ./.gitmessage ~/.gitmessage
+cp -rv ./nvim ~/.config
+cp -rv ./coc/extensions ~/.config/coc
 
 # TODO: installs
+cd ~/.config/coc/extensions && npm install
 
 #exports and configs
 export VISUAL=nvim
