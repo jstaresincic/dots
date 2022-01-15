@@ -45,3 +45,14 @@ function! s:show_documentation()
 endfunction
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" rename symbol
+nmap čx <Plug>(coc-rename)
+
+" use :Prettier or čp to format buffer
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nnoremap čp :Prettier<CR>
+
+" refactoring
+xmap ča  <Plug>(coc-codeaction-selected)
+nmap ča  <Plug>(coc-codeaction-selected)

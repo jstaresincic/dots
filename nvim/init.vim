@@ -4,6 +4,8 @@ call plug#begin("~/.vim/plugged")
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
   " Languages syntax highlighting & snippets
+  " TODO: check if this plugin is better
+  " Plug 'sheerun/vim-polyglot'
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
   Plug 'maxmellon/vim-jsx-pretty'
@@ -29,8 +31,8 @@ syntax enable
 set mps+=<:>
 set ruler
 set scrolloff=4
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 let ayucolor="dark"
