@@ -4,6 +4,7 @@
     "coc-cssmodules": ">=1.1.1",
     "coc-emmet": ">=1.1.6",
     "coc-eslint": ">=1.5.2",
+    "coc-go": ">=1.1.0",
     "coc-html": ">=1.5.1",
     "coc-html-css-support": ">=0.2.4",
     "coc-json": ">=1.4.0",

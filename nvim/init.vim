@@ -19,8 +19,12 @@ call plug#begin("~/.vim/plugged")
   " Ripgrep & save all changes
   Plug 'jremmen/vim-ripgrep'
   Plug 'stefandtw/quickfix-reflector.vim'
+  " Comment stuf out with gcc
+  Plug 'https://github.com/tpope/vim-commentary'
   " Themes
   Plug 'ayu-theme/ayu-vim'
+  " Buffer jumps and statusline
+  Plug 'ojroques/nvim-hardline'
 call plug#end()
 
 " Set basic settings for look&fel
@@ -106,6 +110,11 @@ nnoremap čf gf
 " Jump across jumps
 nnoremap či <C-i>
 nnoremap čo <C-o>
+
+" buffer jumps
+lua require('hardline').setup { bufferline = true}
+nnoremap č1 :bprevious<CR>
+nnoremap č2 :bnext<CR>
 
 function! SourceLocal(relativePath)
   let root = stdpath('config')
