@@ -1,0 +1,135 @@
+" Set basic settings for look&fel
+set nu rnu
+set scrolloff=4
+
+" Configuring nerdtree and devicons
+set NERDTree
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeIgnore = []
+
+nnoremap šš :action SearchEverywhere<CR>
+nnoremap šp :NERDTreeToggle<CR>
+nnoremap ši :action SelectIn<CR>
+inoremap čč <Esc>
+xnoremap čč <Esc>
+cnoremap čč <C-C>
+nnoremap čn :nohlsearch<CR>
+
+" close, split, only, rnu
+nnoremap đđ :close<CR>
+nnoremap đš :vsplit<CR>
+nnoremap đp :split<CR>
+nnoremap đo :tab split<CR>
+nnoremap đq :se nu rnu<CR>
+nnoremap đć <C-W>+
+nnoremap đž <C-W>-
+nnoremap đl <C-W>L
+nnoremap đk <C-W>K
+nnoremap đj <C-W>J
+nnoremap đh <C-W>H
+nnoremap Ć <C-W><
+nnoremap Ž <C-W>>
+
+" Jump panels
+tnoremap čh <C-\><C-n><C-w>h
+tnoremap čj <C-\><C-n><C-w>j
+tnoremap čk <C-\><C-n><C-w>k
+tnoremap čl <C-\><C-n><C-w>l
+nnoremap čh <C-w>h
+nnoremap čj <C-w>j
+nnoremap čk <C-w>k
+nnoremap čl <C-w>l
+
+" Bracket jumps
+nnoremap šj <C-{>
+nnoremap šk <C-}>
+nnoremap šh <C-[>
+nnoremap šl <C-]>
+
+" Start of the line with text
+nnoremap č0 ^
+
+" Open file
+nnoremap čf gf
+
+" Jump across jumps
+nnoremap či <C-i>
+nnoremap čo <C-o>
+
+" tab jumps (equivalent to buffers in my nvim setup)
+nnoremap č2 :action NextTab<CR>
+nnoremap č1 :action PreviousTab<CR>
+
+" IDE functionalities
+nnoremap čd :action GotoDeclaration<CR>
+nnoremap čm :action GotoImplementation<CR>
+nnoremap čp :action ReformatWithPrettierAction<CR>
+vnoremap gc :action CommentByLineComment<CR>
+nnoremap gcc _v$<Esc>:action CommentByLineComment<CR>
+
+
+
+
+
+" ************ try to source it so we don't have duplicates ! ++++++++++
+"
+" Add sub-modes to insert mode
+let s:modes = 0
+let s:isProgramming = 0
+
+function SetJavascriptMode()
+	if s:isProgramming == 0
+		inoremap čh <Esc>i
+		inoremap čj <Esc>ja
+		inoremap čk <Esc>ka
+		inoremap čl <Esc>la
+		inoremap čw <Esc>lwi
+		inoremap če <Esc>ea
+		inoremap čb <Esc>bi
+		inoremap č0 <Esc>^i
+		inoremap č4 <Esc>0$a
+		inoremap ča ()<Esc>i
+    inoremap čs {}<Esc>i
+		inoremap čd []<Esc>i
+		inoremap čf ;
+    inoremap čg :
+		inoremap čr =
+     inoremap čq =>
+		inoremap čt ===
+		inoremap ču "
+		inoremap či '
+		inoremap čo `
+    let s:modes = 1
+		let s:isProgramming = 1
+	else 
+        if s:modes == 1
+		    iunmap čh
+		    iunmap čj
+    		iunmap čk
+		    iunmap čl
+		    iunmap čw
+		    iunmap če
+		    iunmap čb
+		    iunmap č0
+		    iunmap č4
+		    iunmap ča
+		    iunmap čs
+		    iunmap čd
+		    iunmap čf
+        iunmap čg
+		    iunmap čr
+        iunmap čq
+		    iunmap čt
+		    iunmap ču
+		    iunmap či
+		    iunmap čo
+	        let s:isProgramming = 0
+	    endif
+    endif
+    return ""
+endfunction
+
+inoremap đđ <C-R>=SetJavascriptMode()<CR>
+
+" default mode
+call SetJavascriptMode()
