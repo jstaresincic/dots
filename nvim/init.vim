@@ -25,6 +25,8 @@ call plug#begin("~/.vim/plugged")
   Plug 'ayu-theme/ayu-vim'
   " Buffer jumps and statusline
   Plug 'ojroques/nvim-hardline'
+  " Camel case movements
+  Plug 'chaoren/vim-wordmotion'
 call plug#end()
 
 " Set basic settings for look&fel
