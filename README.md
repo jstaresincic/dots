@@ -19,3 +19,8 @@ both folder located in ~/.config on Nix machines
 
 ### CoC
 - ./coc/extensions/package.json
+
+#### Note to myself
+:PlugInstall
+:PlugClean
+:UpdateRemotePlugins
