@@ -25,6 +25,9 @@ call plug#begin("~/.vim/plugged")
   Plug 'ayu-theme/ayu-vim'
   " Buffer jumps and statusline
   Plug 'ojroques/nvim-hardline'
+  " Go-lang plugins
+  Plug 'https://github.com/preservim/tagbar'
+  Plug 'https://github.com/fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " Set basic settings for look&fel
