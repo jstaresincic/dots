@@ -24,3 +24,4 @@ both folder located in ~/.config on Nix machines
 :PlugInstall
 :PlugClean
 :UpdateRemotePlugins
+:help vim-go
