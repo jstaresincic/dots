@@ -28,6 +28,8 @@ call plug#begin("~/.vim/plugged")
   " Go-lang plugins
   Plug 'https://github.com/preservim/tagbar'
   Plug 'https://github.com/fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  " copilot
+  Plug 'github/copilot.vim'
 call plug#end()
 
 " Set basic settings for look&fel
