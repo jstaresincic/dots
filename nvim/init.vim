@@ -30,6 +30,10 @@ call plug#begin("~/.vim/plugged")
   Plug 'https://github.com/fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   " copilot
   Plug 'github/copilot.vim'
+  " Indent blankline
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  " Hop
+  Plug 'phaazon/hop.nvim'
 call plug#end()
 
 " Set basic settings for look&fel
@@ -129,3 +133,7 @@ endfunction
 
 call SourceLocal('coc.vim')
 call SourceLocal('submodes.vim')
+"
+" hop init
+lua require('hop').setup()
+nnoremap ć <cmd>lua require'hop'.hint_words()<cr>
