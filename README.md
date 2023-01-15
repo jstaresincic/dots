@@ -25,3 +25,4 @@ both folder located in ~/.config on Nix machines
 :PlugClean
 :UpdateRemotePlugins
 :help vim-go
+:Copilot
