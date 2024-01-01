@@ -33,7 +33,7 @@ call plug#begin("~/.vim/plugged")
   " Indent blankline
   Plug 'lukas-reineke/indent-blankline.nvim'
   " Hop
-  Plug 'phaazon/hop.nvim'
+  Plug 'smoka7/hop.nvim'
 call plug#end()
 
 " Set basic settings for look&fel
