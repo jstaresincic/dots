@@ -22,7 +22,7 @@ call plug#begin("~/.vim/plugged")
   " Comment stuf out with gcc
   Plug 'https://github.com/tpope/vim-commentary'
   " Themes
-  Plug 'ayu-theme/ayu-vim'
+  Plug 'savq/melange-nvim'
   " Buffer jumps and statusline
   Plug 'ojroques/nvim-hardline'
   " Go-lang plugins
@@ -137,3 +137,7 @@ call SourceLocal('submodes.vim')
 " hop init
 lua require('hop').setup()
 nnoremap ć <cmd>lua require'hop'.hint_words()<cr>
+"
+" Configure Themes
+set termguicolors
+colorscheme melange
